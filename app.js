@@ -27,3 +27,23 @@ const decrement = () => {
 // action is dispatched action with type and optionl payload
 // reducer reduces the previous state and incoming action to new state
 // always returns new state without mutating incoming object
+
+function counter(state = 0, action) {
+  console.log("counter", action);
+  switch (action.type) {
+    case "INCREMENT":
+      return state + 1;
+    case "DECREMENT":
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+//store: glues actions and reducers.
+//where do I trigger actions? who delegates the actions to reducer?
+//where do i get the updated state to glue it to the view?
+//holds one global state object
+// no multiple stores/states. store is only one instance
+
+const store = createStore(counter);
